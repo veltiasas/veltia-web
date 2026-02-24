@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-midnight: #0A0E14;
+  --color-carbon: #1A222D;
+  --color-carbon-light: #222B38;
+  --color-neon: #00F2FF;
+  --color-sunset: #FF8C42;
+  --color-sunset-deep: #FF6B35;
+  --color-warm: #FFB347;
+  --color-ice: #E0F7FA;
+  --color-ice-muted: #8899AA;
+  --color-muted: #4A5568;
+
+  --font-display: var(--font-rajdhani), ui-sans-serif, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
+}
+
+/* Base */
+body {
+  background: var(--color-midnight);
+  color: var(--color-ice);
+}
+
+/* Tech grid background */
+.tech-grid-bg {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 242, 255, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(26, 34, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 242, 255, 0.12);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 242, 255, 0.35);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
+/* Neon glow utilities */
+.glow-neon {
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+.glow-neon-strong {
+  box-shadow: 0 0 40px rgba(0, 242, 255, 0.5);
+}
+
+.glow-sunset {
+  box-shadow: 0 0 20px rgba(255, 140, 66, 0.3);
+}
+
+/* Text gradients */
+.text-gradient-neon {
+  background: linear-gradient(135deg, #00F2FF, #FF8C42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-sunset {
+  background: linear-gradient(135deg, #FF6B35, #FF8C42, #FFB347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-brand {
+  background: linear-gradient(90deg, #FF6B35 0%, #FF8C42 40%, #00F2FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Line gradient */
+.bg-gradient-brand {
+  background: linear-gradient(90deg, #FF6B35, #FF8C42, #00F2FF);
+}
+
+/* Neon text shadow */
+.text-neon-shadow {
+  text-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+}
+
+/* Sunset text shadow */
+.text-sunset-shadow {
+  text-shadow: 0 0 30px rgba(255, 140, 66, 0.2);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-midnight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-carbon-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ice-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
