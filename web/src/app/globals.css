@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-midnight: #0A0E14;
+  --color-carbon: #1A222D;
+  --color-carbon-light: #222B38;
+  --color-neon: #00F2FF;
+  --color-sunset: #FF8C42;
+  --color-sunset-deep: #FF6B35;
+  --color-warm: #FFB347;
+  --color-green: #22C55E;
+  --color-green-dark: #16A34A;
+  --color-ice: #E0F7FA;
+  --color-ice-muted: #8899AA;
+  --color-muted: #4A5568;
+
+  --font-display: var(--font-rajdhani), ui-sans-serif, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
+}
+
+/* Base */
+body {
+  background: var(--color-midnight);
+  color: var(--color-ice);
+}
+
+/* Tech grid background */
+.tech-grid-bg {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 242, 255, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(26, 34, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 242, 255, 0.12);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 242, 255, 0.35);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
+/* Neon glow utilities */
+.glow-neon {
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+.glow-neon-strong {
+  box-shadow: 0 0 40px rgba(0, 242, 255, 0.5);
+}
+
+.glow-sunset {
+  box-shadow: 0 0 20px rgba(255, 140, 66, 0.3);
+}
+
+/* Text gradients */
+.text-gradient-neon {
+  background: linear-gradient(135deg, #00F2FF, #FF8C42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-sunset {
+  background: linear-gradient(135deg, #FF6B35, #FF8C42, #FFB347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-brand {
+  background: linear-gradient(90deg, #FF6B35 0%, #FF8C42 40%, #00F2FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Line gradient */
+.bg-gradient-brand {
+  background: linear-gradient(90deg, #FF6B35, #FF8C42, #00F2FF);
+}
+
+/* Green glow */
+.glow-green {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+/* Green text gradient */
+.text-gradient-green {
+  background: linear-gradient(135deg, #16A34A, #22C55E, #4ADE80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon text shadow */
+.text-neon-shadow {
+  text-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+}
+
+/* Sunset text shadow */
+.text-sunset-shadow {
+  text-shadow: 0 0 30px rgba(255, 140, 66, 0.2);
+}
+
+/* ==========================================
+   BIOLUMINESCENT / AVATAR EFFECTS
+   ========================================== */
+
+/* Spore floating: vertical drift + horizontal sway */
+@keyframes bioFloat {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: var(--spore-opacity, 0.3);
+  }
+  25% {
+    transform: translateY(75vh) translateX(var(--sway, 20px));
+  }
+  50% {
+    transform: translateY(50vh) translateX(calc(var(--sway, 20px) * -0.6));
+  }
+  75% {
+    transform: translateY(25vh) translateX(var(--sway, 20px));
+  }
+  95% {
+    opacity: var(--spore-opacity, 0.3);
+  }
+  100% {
+    transform: translateY(-5vh) translateX(0);
+    opacity: 0;
+  }
+}
+
+/* Pulsing glow for nodes and icons */
+@keyframes bioPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px var(--pulse-color, rgba(34,197,94,0.3));
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px var(--pulse-color, rgba(34,197,94,0.5)),
+                0 0 40px var(--pulse-color, rgba(34,197,94,0.15));
+  }
+}
+
+/* Brightness oscillation */
+@keyframes bioGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* SVG tendril growing via stroke-dashoffset */
+@keyframes tendrilGrow {
+  from { stroke-dashoffset: var(--path-length, 500); }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Pulse traveling along mycelium lines */
+@keyframes myceliumPulse {
+  0% { stroke-dashoffset: 40; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Spore glow trail */
+@keyframes sporeGlow {
+  0%, 100% {
+    box-shadow: 0 0 4px var(--spore-color, rgba(34,197,94,0.4)),
+                0 0 8px var(--spore-color, rgba(34,197,94,0.2));
+  }
+  50% {
+    box-shadow: 0 0 8px var(--spore-color, rgba(34,197,94,0.6)),
+                0 0 20px var(--spore-color, rgba(34,197,94,0.3)),
+                0 0 40px var(--spore-color, rgba(34,197,94,0.1));
+  }
+}
+
+/* Icon bio pulse (subtle) */
+@keyframes bioIconPulse {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(34,197,94,0.3)); }
+  50% { filter: drop-shadow(0 0 8px rgba(34,197,94,0.6)); }
+}
+
+/* Text glow pulse */
+@keyframes bioTextGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(34,197,94,0.2); }
+  50% { text-shadow: 0 0 20px rgba(34,197,94,0.4), 0 0 40px rgba(34,197,94,0.1); }
+}
+
+/* Bio glow utility classes */
+.bio-glow-green {
+  box-shadow: 0 0 15px rgba(34,197,94,0.4), 0 0 40px rgba(34,197,94,0.15);
+}
+
+.bio-glow-cyan {
+  box-shadow: 0 0 15px rgba(0,242,255,0.4), 0 0 40px rgba(0,242,255,0.15);
+}
+
+/* Glass card bio variant */
+.glass-card-bio {
+  background: rgba(26, 34, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(34, 197, 94, 0.12);
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+
+.glass-card-bio:hover {
+  border-color: rgba(34, 197, 94, 0.4);
+  box-shadow: 0 0 20px rgba(34,197,94,0.15), 0 0 40px rgba(34,197,94,0.05);
+}
+
+/* Green text shadow pulse */
+.text-green-glow {
+  animation: bioTextGlow 3s ease-in-out infinite;
+}
+
+/* Footer bio glow */
+.bio-glow-footer {
+  text-shadow: 0 0 8px rgba(34,197,94,0.3);
+  animation: bioTextGlow 4s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-midnight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-carbon-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ice-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
